@@ -54,7 +54,7 @@ class Sheet implements IteratorAggregate
 
         $headings = $this->isFirstRowAsHeading()
             ? $rows->shift()
-            : $rows->keys()->toArray();
+            : range(1, count($rows->get(1)));
 
         $rows = $rows->map(function (array $row) use ($headings) {
             return new Row($row, $headings);
